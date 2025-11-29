@@ -1,3 +1,5 @@
+#!/usr/bin/bash
+
 ln -sf /usr/share/zoneinfo/Europe/Oslo /etc/localtime
 hwclock --systohc
 sed -i '178s/.//' /etc/locale.gen
