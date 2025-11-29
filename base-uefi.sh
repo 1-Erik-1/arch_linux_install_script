@@ -12,7 +12,7 @@ echo "::1       localhost" >> /etc/hosts
 echo "127.0.1.1 arch.localdomain arch" >> /etc/hosts
 echo root:password | chpasswd
 
-pacman -S grub efibootmgr networkmanager wpa_supplicant dialog base-devel linux-headers neofetch vim rsync openssh bash-completion xdg-user-dirs xdg-utils gvfs gvfs-smb inetutils dnsutils sudo plasma-meta kde-applications-meta sddm pipewire pipewire-alsa pipewire-pulse pipewire-jack wireplumber spice-vdagent qemu-guest-agent mtools dosfstools ntfs-3g reflector terminus-font
+pacman -S --noconfirm grub efibootmgr networkmanager wpa_supplicant dialog base-devel linux-headers neofetch vim rsync openssh bash-completion xdg-user-dirs xdg-utils gvfs gvfs-smb inetutils dnsutils sudo plasma-meta kde-applications-meta sddm pipewire pipewire-alsa pipewire-pulse pipewire-jack wireplumber spice-vdagent qemu-guest-agent mtools dosfstools ntfs-3g reflector terminus-font
 
 grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=GRUB 
 
