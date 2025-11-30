@@ -22,6 +22,7 @@ pacman -Syu --noconfirm \
     gvfs gvfs-smb \
     pipewire pipewire-alsa pipewire-pulse pipewire-jack wireplumber \
     spice-vdagent qemu-guest-agent \
+    kitty tlp hyprland 
 
 grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=GRUB 
 
