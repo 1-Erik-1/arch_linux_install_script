@@ -2,41 +2,27 @@
 
 ln -sf /usr/share/zoneinfo/Europe/Oslo /etc/localtime
 hwclock --systohc
-
+sed -i 's/^#en_US.UTF-8 UTF-8/en_US.UTF-8 UTF-8/' /etc/locale.gen
 locale-gen
 echo LANG=en_US.UTF-8 > /etc/locale.conf
 echo KEYMAP=no > /etc/vconsole.conf
 echo arch > /etc/hostname
+echo "127.0.0.1   localhost" >> /etc/hosts
+echo "::1         localhost" >> /etc/hosts
+echo "127.0.1.1   arch" >> /etc/hosts
 echo root:no | chpasswd
 
 pacman -Syu --noconfirm \
-    # Bootloader and EFI tools
     grub efibootmgr \
-    \
-    # Networking
     networkmanager wpa_supplicant \
-    \
-    # Core utilities
     dialog base-devel linux-headers vim rsync openssh bash-completion \
     xdg-user-dirs xdg-utils inetutils dnsutils sudo reflector terminus-font \
-    \
-    # Filesystem and storage tools
     mtools dosfstools ntfs-3g \
-    \
-    # GVFS and file integration
     gvfs gvfs-smb \
-    \
-    # Desktop environment
-    plasma-meta kde-applications-meta sddm \
-    \
-    # Audio stack (PipeWire-based)
     pipewire pipewire-alsa pipewire-pulse pipewire-jack wireplumber \
-    \
-    # Virtualization agents
     spice-vdagent qemu-guest-agent \
-    \ 
-    # Wayland stack 
-    hyprland waybar foot wofi mako swww fish dolphin gtk-engine-murrine gtk-engines
+    hyprland waybar foot wofi mako swww fish dolphin gtk-engine-murrine gtk-engines greetd tlp xdg-desktop-portal-hyprland pavucontrol
+
 
 grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=GRUB 
 
@@ -45,7 +31,8 @@ grub-mkconfig -o /boot/grub/grub.cfg
 systemctl enable NetworkManager
 systemctl enable reflector.timer
 systemctl enable fstrim.timer
-systemctl enable acpid
+systemctl enable greetd
+systemctl enable tlp
 
 useradd -m harold
 echo harold:no | chpasswd
