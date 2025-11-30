@@ -21,8 +21,9 @@ pacman -Syu --noconfirm \
     gvfs gvfs-smb \
     pipewire pipewire-alsa pipewire-pulse pipewire-jack wireplumber \
     spice-vdagent qemu-guest-agent \
-    hyprland waybar foot wofi mako swww fish dolphin gtk-engine-murrine gtk-engines greetd tlp xdg-desktop-portal-hyprland pavucontrol
-
+    hyprland waybar foot wofi mako swww fish dolphin greetd tlp xdg-desktop-portal-wlr pavucontrol \
+    adwaita-gtk3 adwaita-gtk4 qt5ct qt6ct adwaita-qt papirus-icon-theme \
+    noto-fonts ttf-dejavu ttf-ubuntu-font-family
 
 grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=GRUB 
 
