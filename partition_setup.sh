@@ -33,14 +33,8 @@ sleep 0.5
 
 # Generate fstab
 genfstab -U /mnt >> /mnt/etc/fstab
+echo "fstab generated."
+sleep 0.5
 
 # Chroot into the new system
 arch-chroot /mnt 
-
-# Clone and run the installation script
-pacman -Syu --noconfirm git 
-sleep 0.5
-git clone https://github.com/1-Erik-1/arch-linux-install-script.git
-sleep 0.5
-chmod +x arch-linux-install-script/install.sh
-./arch-linux-install-script/install.sh
