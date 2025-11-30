@@ -11,6 +11,8 @@ parted -s /dev/sda set 1 esp on
 parted -s /dev/sda mkpart swap linux-swap 1025MiB 5121MiB
 # 3. Root Partition: Remaining space max 64GB
 parted -s /dev/sda mkpart root ext4 5121MiB 100%
+echo "Partitioning complete."
+sleep 0.5
 
 # Mount points and formatting:
 mkfs.fat -F 32 -n boot /dev/sda1
@@ -21,9 +23,13 @@ mkfs.ext4 -L root /dev/sda3
 mount /dev/sda3 /mnt
 mount --mkdir /dev/sda1 /mnt/boot
 swapon /dev/sda2
+echo "Partitions formatted and mounted."
+sleep 0.5
 
 # Install base system
 pacstrap -K /mnt base linux linux-firmware
+echo "Base system installed."
+sleep 0.5
 
 # Generate fstab
 genfstab -U /mnt >> /mnt/etc/fstab
@@ -33,6 +39,8 @@ arch-chroot /mnt
 
 # Clone and run the installation script
 pacman -S --noconfirm git 
+sleep 0.5
 git clone https://github.com/1-Erik-1/arch-linux-install-script.git
+sleep 0.5
 chmod +x arch-linux-install-script/install.sh
 ./arch-linux-install-script/install.sh
