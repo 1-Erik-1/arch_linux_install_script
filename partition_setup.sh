@@ -38,7 +38,7 @@ genfstab -U /mnt >> /mnt/etc/fstab
 arch-chroot /mnt 
 
 # Clone and run the installation script
-pacman -S --noconfirm git 
+pacman -Syu --noconfirm git 
 sleep 0.5
 git clone https://github.com/1-Erik-1/arch-linux-install-script.git
 sleep 0.5
