@@ -17,7 +17,7 @@ pacman -Syu --noconfirm \
     networkmanager wpa_supplicant \
     dialog base-devel linux-headers vim rsync openssh bash-completion \
     xdg-user-dirs xdg-utils inetutils dnsutils sudo reflector \
-    terminus-fonts ttf-dejavu noto-fonts \
+    terminus-font ttf-dejavu noto-fonts \
     mtools dosfstools ntfs-3g \
     gvfs gvfs-smb \
     pipewire pipewire-alsa pipewire-pulse pipewire-jack wireplumber \
